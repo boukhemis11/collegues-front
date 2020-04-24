@@ -10,7 +10,16 @@ export class CollegueComponent implements OnInit {
 
   @Input() col: Collegue;
 
-  constructor() { }
+  constructor() {
+   }
+
+  modifier() {
+    console.log('Modification du collègue');
+  }
+
+  ajouter() {
+    console.log('Ajouter du collègue');
+  }
 
   ngOnInit(): void {
 

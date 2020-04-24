@@ -1,9 +1,9 @@
 
 <div>
   <div class="container">
-    <div class="row justify-content-start">
+    <div class="row justify-content-start mt-3">
     <div class="col-4"><img src={{col.photoUrl}} alt="image" /></div>
-    <div class="col-4">
+    <div class="col-4 mt-3">
       <span class="badge">Matricule {{col.matricule}}</span><br>
       <span class="badge">Nom {{col.nom}}</span><br>
       <span class="badge">Prénom {{col.prenoms}}</span><br>
@@ -11,7 +11,7 @@
       <span class="badge">Email {{col.email}}</span><br>
     </div>
   </div>
-    <div class="row justify-content-center">    <a href="#">Créer un nouveau collègue</a> <button class="ml-5">Modifier</button></div>
+    <div class="row justify-content-center">    <a href="#" >Créer un nouveau collègue</a> <button class="ml-5" (click)="modifier()">Modifier</button></div>
 
   </div>
 </div>
