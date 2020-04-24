@@ -1,24 +1,47 @@
+<div class="container">
+  <ul>
+    <li class="list-group" *ngFor="let c of col">
+      <div class="row justify-content-start mt-3">
+        <div class="col-4"><img src={{c.photoUrl}} alt="image" /></div>
+        <div class="col-4 mt-3">
+          <span class="badge">Matricule</span><br>
+          <span class="badge">Nom</span><br>
+          <span class="badge">Prénom</span><br>
+          <span class="badge">Date de naissance</span><br>
+          <span class="badge">Email</span><br>
+          <div *ngIf="mod">
+            <span class="badge">Photo URL</span>
+          </div>
+        </div>
+        <div class="col-4 mt-3">
+          <span class="badge">{{c.matricule}}</span><br>
+          <span class="badge">{{c.nom | uppercase}}</span><br>
+          <span class="badge">{{c.prenoms}}</span><br>
+          <span class="badge">{{c.dateDeNaissance | date : "dd.MM.y"}}</span><br>
+          <div *ngIf="show">
+            <span class="badge">{{c.email}}</span><br>
+          </div>
+          <div *ngIf="mod">
+            <input type="email">
+            <input type="text">
+          </div>
 
-<div>
-  <div class="container">
-    <div class="row justify-content-start mt-3">
-    <div class="col-4"><img src={{col.photoUrl}} alt="image" /></div>
-    <div class="col-4 mt-3">
-      <span class="badge">Matricule</span><br>
-      <span class="badge">Nom</span><br>
-      <span class="badge">Prénom</span><br>
-      <span class="badge">Date de naissance</span><br>
-      <span class="badge">Email</span><br>
-    </div>
-    <div class="col-4 mt-3">
-      <span class="badge">{{col.matricule}}</span><br>
-      <span class="badge">{{col.nom}}</span><br>
-      <span class="badge">{{col.prenoms}}</span><br>
-      <span class="badge">{{col.dateDeNaissance | date : "dd.MM.y"}}</span><br>
-      <span class="badge">{{col.email}}</span><br>
-    </div>
-  </div>
-    <div class="row justify-content-center">    <a href="#" >Créer un nouveau collègue</a> <button class="ml-5" (click)="modifier()">Modifier</button></div>
-
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div *ngIf="show">
+          <button class="ml-5" (click)="modifier()">Modifier</button>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div *ngIf="mod">
+          <button class="ml-5" (click)="valide()">Valider</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div *ngIf="show">
+    <div class="row justify-content-center"> <button (click)="ajouter()" class="btn btn-link">Créer un nouveau
+        collègue</button> </div>
   </div>
 </div>

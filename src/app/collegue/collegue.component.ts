@@ -8,13 +8,22 @@ import {Collegue} from '../models/Collegue';
 })
 export class CollegueComponent implements OnInit {
 
-  @Input() col: Collegue;
+  @Input() col: Collegue[];
+  show: boolean = true;
+  mod: boolean = false;
 
   constructor() {
+
    }
 
   modifier() {
-    console.log('Modification du collègue');
+    this.mod=true;
+    this.show=false;
+  }
+
+  valide(){
+    this.mod=false;
+    this.show=true;
   }
 
   ajouter() {
