@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
 </head>
 <body>
-  <app-collegue [col]="collegues"></app-collegue>
-  <app-recherche-collegue-par-nom></app-recherche-collegue-par-nom>
+  <div class="row justify-content-start">
+    <div class="col-6">
+      <app-recherche-collegue-par-nom></app-recherche-collegue-par-nom>
+    </div>
+    <div class="col-6">
+      <app-collegue [col]="collegues"></app-collegue>
+    </div>
+  </div>
 </body>
 </html>

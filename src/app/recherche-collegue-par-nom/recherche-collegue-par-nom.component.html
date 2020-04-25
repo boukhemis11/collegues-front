@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row justify-content-start mt-3">
-    <p class="mr-5">Recherche par nom</p>
-    <input #searchBox >
-    <button class="ml-5" (click)="search(searchBox.value)">Recherche</button>
-    <p class="ml-5">{{m}}</p>
+    <p class="col-3 mr-5">Recherche par nom</p>
+    <input class="col-3" #searchBox >
+    <button class="col-3 ml-5" (click)="search(searchBox.value)">Recherche</button>
+
+  </div>
+  <div *ngIf="res">
+    <p class="ml-5 mt-5">Le Matricule de {{name}} est : {{m}}</p>
   </div>
 </div>

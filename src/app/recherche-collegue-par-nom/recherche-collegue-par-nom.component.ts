@@ -9,12 +9,16 @@ import { COLLEGUES } from '../mock/collegues.mock';
 export class RechercheCollegueParNomComponent implements OnInit {
 
   collegues = COLLEGUES;
-  m:string;
+  m: string;
+  name: string;
+  res: boolean = false;
 
   search(mot){
     for (let c of this.collegues) {
       if ( c.nom === mot){
         this.m = c.matricule;
+        this.name = c.nom;
+        this.res = true;
       }
     }
   }
