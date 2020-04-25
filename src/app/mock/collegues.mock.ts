@@ -22,4 +22,11 @@ export const COLLEGUES: Collegue[] = [
   dateDeNaissance: new Date(1995, 12, 13),
   photoUrl: 'http://fakeimg.pl/200/'
 },
+{ matricule: '4434636488',
+  nom: 'Salga',
+  prenoms: 'Farid',
+  email: 'far@gmail.com',
+  dateDeNaissance: new Date(1998, 1, 21),
+  photoUrl: 'http://fakeimg.pl/200/'
+}
 ];

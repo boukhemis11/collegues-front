@@ -9,15 +9,17 @@ import { COLLEGUES } from '../mock/collegues.mock';
 export class RechercheCollegueParNomComponent implements OnInit {
 
   collegues = COLLEGUES;
-  m: string;
-  name: string;
+  mat = [];
+  lname = [];
   res = false;
 
   search(mot){
+    this.mat = [];
+    this.lname = [];
     for (let c of this.collegues) {
       if ( c.nom === mot){
-        this.m = c.matricule;
-        this.name = c.nom;
+        this.mat.push(c.matricule);
+        this.lname.push(c.prenoms);
         this.res = true;
       }
     }
