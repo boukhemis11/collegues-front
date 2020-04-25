@@ -14,25 +14,22 @@ export class CollegueComponent implements OnInit {
   mod = false;
 
   constructor() {
-
    }
 
   modifier(c: Collegue) {
-    this.coll = this.col.filter(e => e === c);
+    this.coll = this.coll.filter(e => e === c);
     this.mod = true;
     this.show = false;
-
   }
 
   valide(){
-
     this.coll = this.col;
     this.mod = false;
     this.show = true;
   }
 
   ajouter() {
-    console.log('Ajouter du collègue');
+    console.log('Ajouter un collègue');
   }
 
   ngOnInit(): void {
