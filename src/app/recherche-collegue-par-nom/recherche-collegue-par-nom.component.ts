@@ -11,7 +11,7 @@ export class RechercheCollegueParNomComponent implements OnInit {
   collegues = COLLEGUES;
   m: string;
   name: string;
-  res: boolean = false;
+  res = false;
 
   search(mot){
     for (let c of this.collegues) {

@@ -9,21 +9,26 @@ import {Collegue} from '../models/Collegue';
 export class CollegueComponent implements OnInit {
 
   @Input() col: Collegue[];
-  show: boolean = true;
-  mod: boolean = false;
+  coll: Collegue[];
+  show = true;
+  mod = false;
 
   constructor() {
 
    }
 
-  modifier() {
-    this.mod=true;
-    this.show=false;
+  modifier(c: Collegue) {
+    this.coll = this.col.filter(e => e === c);
+    this.mod = true;
+    this.show = false;
+
   }
 
   valide(){
-    this.mod=false;
-    this.show=true;
+
+    this.coll = this.col;
+    this.mod = false;
+    this.show = true;
   }
 
   ajouter() {
@@ -31,6 +36,6 @@ export class CollegueComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.coll = this.col;
   }
 }

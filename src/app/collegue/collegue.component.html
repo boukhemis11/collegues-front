@@ -1,6 +1,6 @@
 <div class="container">
   <ul>
-    <li class="list-group" *ngFor="let c of col">
+    <li class="list-group" *ngFor="let c of coll">
       <div class="row justify-content-start mt-3">
         <div class="col-4"><img src={{c.photoUrl}} alt="image" /></div>
         <div class="col-4 mt-3">
@@ -21,16 +21,17 @@
           <div *ngIf="show">
             <span class="badge">{{c.email}}</span><br>
           </div>
-          <div *ngIf="mod">
-            <input type="email">
-            <input type="text">
+          <div *ngIf="mod && c.matricule">
+            <input type="email" value="{{c.email}}">
+            <input type="text" value="{{c.photoUrl}}">
+
           </div>
 
         </div>
       </div>
       <div class="row justify-content-end">
         <div *ngIf="show">
-          <button class="ml-5" (click)="modifier()">Modifier</button>
+          <button class="ml-5" (click)="modifier(c)">Modifier</button>
         </div>
       </div>
       <div class="row justify-content-end">
