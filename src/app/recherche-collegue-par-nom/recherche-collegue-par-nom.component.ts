@@ -12,8 +12,10 @@ export class RechercheCollegueParNomComponent implements OnInit {
   mat = [];
   lname = [];
   res = false;
+  noRes: boolean;
 
   search(mot){
+    this.noRes = false;
     this.mat = [];
     this.lname = [];
     for (let c of this.collegues) {
@@ -22,6 +24,9 @@ export class RechercheCollegueParNomComponent implements OnInit {
         this.lname.push(c.prenoms);
         this.res = true;
       }
+    }
+    if (this.mat.length === 0) {
+      this.noRes = true;
     }
   }
 
