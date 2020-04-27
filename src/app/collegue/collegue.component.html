@@ -1,47 +1,46 @@
 <div class="container">
   <ul>
-    <li class="list-group" *ngFor="let c of coll">
+    <li class="list-group">
       <div class="row justify-content-start mt-3">
-        <div class="col-4"><img src={{c.photoUrl}} alt="image" /></div>
+        <div class="col-4"><img src={{col.photoUrl}} class="img-fluid" alt="image" /></div>
         <div class="col-4 mt-3">
           <span class="badge">Matricule</span><br>
           <span class="badge">Nom</span><br>
           <span class="badge">Prénom</span><br>
           <span class="badge">Date de naissance</span><br>
           <span class="badge">Email</span><br>
-          <div *ngIf="mod">
+          <div *ngIf="modeModification">
             <span class="badge">Photo URL</span>
           </div>
         </div>
         <div class="col-4 mt-3">
-          <span class="badge">{{c.matricule}}</span><br>
-          <span class="badge">{{c.nom | uppercase}}</span><br>
-          <span class="badge">{{c.prenoms}}</span><br>
-          <span class="badge">{{c.dateDeNaissance | date : "dd.MM.y"}}</span><br>
-          <div *ngIf="show">
-            <span class="badge">{{c.email}}</span><br>
+          <span class="badge">{{col.matricule}}</span><br>
+          <span class="badge">{{col.nom | uppercase}}</span><br>
+          <span class="badge">{{col.prenoms}}</span><br>
+          <span class="badge">{{col.dateDeNaissance | date : "dd.MM.y"}}</span><br>
+          <div *ngIf="!modeModification">
+            <span class="badge">{{col.email}}</span><br>
           </div>
-          <div *ngIf="mod && c.matricule">
-            <input type="email" value="{{c.email}}">
-            <input type="text" value="{{c.photoUrl}}">
-
+          <div *ngIf="modeModification">
+            <input type="email" value="{{col.email}}">
+            <input type="text" value="{{col.photoUrl}}">
           </div>
 
         </div>
       </div>
       <div class="row justify-content-end">
-        <div *ngIf="show">
-          <button class="mr-5" (click)="modifier(c)">Modifier</button>
+        <div *ngIf="!modeModification">
+          <button class="mr-5" (click)="modifier()">Modifier</button>
         </div>
       </div>
       <div class="row justify-content-end">
-        <div *ngIf="mod">
+        <div *ngIf="modeModification">
           <button class="mr-5" (click)="valide()">Valider</button>
         </div>
       </div>
     </li>
   </ul>
-  <div *ngIf="show">
+  <div *ngIf="!modeModification">
     <div class="row justify-content-center"> <button (click)="ajouter()" class="btn btn-link">Créer un nouveau
         collègue</button> </div>
   </div>

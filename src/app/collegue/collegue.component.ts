@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Collegue} from '../models/Collegue';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-collegue',
@@ -8,24 +9,20 @@ import {Collegue} from '../models/Collegue';
 })
 export class CollegueComponent implements OnInit {
 
-  @Input() col: Collegue[];
-  coll: Collegue[];
-  show = true;
-  mod = false;
+  //@Input() col: Collegue;
+  col;
+  modeModification = false;
 
-  constructor() {
+  constructor(private dataService: DataService) {
+
    }
 
-  modifier(c: Collegue) {
-    this.coll = this.coll.filter(e => e === c);
-    this.mod = true;
-    this.show = false;
+  modifier() {
+    this.modeModification = true;
   }
 
   valide(){
-    this.coll = this.col;
-    this.mod = false;
-    this.show = true;
+    this.modeModification = false;
   }
 
   ajouter() {
@@ -33,6 +30,6 @@ export class CollegueComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.coll = this.col;
+    this.col = this.dataService.recupererCollegueCourant();
   }
 }
