@@ -19,9 +19,8 @@ export class DataService {
 
     }
 
-    recupererCollegueCourant(): Collegue {
-      this.collegue = COLLEGUES[0];
-      console.log(this.collegue)
-      return this.collegue;
-    }
+  recupererCollegueCourant(): Collegue {
+    this.collegue = COLLEGUES[0];
+    return this.collegue;
+  }
 }
