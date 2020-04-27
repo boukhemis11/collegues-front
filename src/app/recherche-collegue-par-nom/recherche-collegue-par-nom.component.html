@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-12 ">
         <ul class="list-group">
-          <li class="list-group-item" *ngFor="let m of listeMatricules">{{m}}</li>
+          <li class="list-group-item" *ngFor="let m of listeMatricules" (click)="getCollegue(m)">{{m}}</li>
         </ul>
       </div>
     </div>

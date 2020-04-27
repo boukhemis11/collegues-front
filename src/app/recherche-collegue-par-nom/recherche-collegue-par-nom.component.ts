@@ -13,10 +13,21 @@ export class RechercheCollegueParNomComponent implements OnInit {
 
   listeMatricules = [];
   mot;
+  coll;
 
   search(mot){
-    this.listeMatricules = this.dataService.rechercherParNom(mot);
+    this.dataService.rechercherParNom(mot)
+    .subscribe(matricule => {
+      this.listeMatricules = matricule;
+    });
+
+    console.log(this.listeMatricules);
   }
+
+  getCollegue(mat){
+    this.dataService.selectionnerCollegue(mat);
+  }
+
 
   ngOnInit(): void {
   }
