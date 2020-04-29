@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'https://digicapi.herokuapp.com/collegues'
+  backendUrl: 'https://collegues-api-spring-boot.herokuapp.com/collegues'
 };
 
 /*

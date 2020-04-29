@@ -35,4 +35,9 @@ export class DataService {
     this.collegue = this.http.get(this.URL_BACKEND);
     return this.collegue;
   }
+
+  create(data) {
+    console.log(data)
+    return this.http.post(this.URL_BACKEND, data);
+  }
 }

@@ -9,9 +9,9 @@ import { DataService } from '../services/data.service';
 })
 export class CollegueComponent implements OnInit {
 
-  //@Input() col: Collegue;
-  col: Collegue;
+  col: Collegue ;
   modeModification = false;
+  show=false;
 
   constructor(private dataService: DataService) {
    }
@@ -29,6 +29,7 @@ export class CollegueComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataService.abonnementCollegueEnCours().subscribe(collegueSelect => this.col = collegueSelect );
+    this.dataService.abonnementCollegueEnCours()
+      .subscribe(collegueSelect => {this.col = collegueSelect , this.show=true});
   }
 }

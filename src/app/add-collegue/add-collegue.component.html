@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <form #collegueForm="ngForm">
+<div class="submit-form">
+
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nom"
+        required
+        [(ngModel)]="col.nom"
+        name="nom"
+      />
+
+    </div>
+
+    <div class="form-group">
+      <label for="prenoms">Prenom</label>
+      <input
+        class="form-control"
+        id="prenoms"
+        required
+        [(ngModel)]="col.prenoms"
+        name="prenoms"
+      />
+    </div>
+
+    <div class="form-group">
+    <label for="dateDeNaissance">Date De Naissance</label>
+    <input
+      type="text"
+      class="form-control"
+      id="dateDeNaissance"
+      required
+      [(ngModel)]="col.dateDeNaissance"
+      name="dateDeNaissance"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      class="form-control"
+      id="email"
+      required
+      [(ngModel)]="col.email"
+      name="email"
+
+    />
+
+  </div>
+
+
+  <div class="form-group">
+    <label for="photoUrl">Photo URL A</label>
+    <input
+      class="form-control"
+      id="photoUrl"
+      required
+      [(ngModel)]="col.photoUrl"
+      name="photoUrl"
+    />
+  </div>
+
+    <button (click)="saveCollegue()" class="btn btn-success">Submit</button>
+  </div>
+</form>
+</div>
+</div>
