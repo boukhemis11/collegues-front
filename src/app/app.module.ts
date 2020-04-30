@@ -21,7 +21,8 @@ export const ROUTES: Routes = [
   { path: 'gallerie', component: GallerieComponent },
   { path: 'apropos', component: AproposComponent },
   { path: 'add', component: AddCollegueComponent },
-  { path: 'edit', component: EditCollegueComponent }
+  { path: 'edit', component: EditCollegueComponent },
+  { path: '',   redirectTo: '/accueil', pathMatch: 'full' },
   ];
 
 @NgModule({
