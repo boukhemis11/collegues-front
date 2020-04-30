@@ -1,71 +1,56 @@
 <div class="container">
+  <h2 class="mb-3">Ajouter Collegue</h2>
   <div class="row">
+
     <form #collegueForm="ngForm">
-<div class="submit-form">
+      <div class="submit-form">
 
-    <div class="form-group">
-      <label for="nom">Nom</label>
-      <input
-        type="text"
-        class="form-control"
-        id="nom"
-        required
-        [(ngModel)]="col.nom"
-        name="nom"
-      />
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom" required [(ngModel)]="col.nom" name="nom" #name="ngModel"/>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            Nom is required
+          </div>
 
-    </div>
+        </div>
 
-    <div class="form-group">
-      <label for="prenoms">Prenom</label>
-      <input
-        class="form-control"
-        id="prenoms"
-        required
-        [(ngModel)]="col.prenoms"
-        name="prenoms"
-      />
-    </div>
+        <div class="form-group">
+          <label for="prenoms">Prenom</label>
+          <input class="form-control" id="prenoms" required [(ngModel)]="col.prenoms" name="prenoms" #lname="ngModel"/>
+          <div [hidden]="lname.valid" class="alert alert-danger">
+            Prenom is required
+          </div>
+        </div>
 
-    <div class="form-group">
-    <label for="dateDeNaissance">Date De Naissance</label>
-    <input
-      type="text"
-      class="form-control"
-      id="dateDeNaissance"
-      required
-      [(ngModel)]="col.dateDeNaissance"
-      name="dateDeNaissance"
-    />
+
+        <div class="form-group">
+          <label for="dateDeNaissance">Date De Naissance</label>
+          <input type="text" class="form-control" id="dateDeNaissance" required [(ngModel)]="col.dateDeNaissance"
+            name="dateDeNaissance" #date_de_naissance="ngModel"/>
+            <div [hidden]="date_de_naissance.valid || date_de_naissance.pristine" class="alert alert-danger">
+              Date De Naissance is required
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class="form-control" id="email" required [(ngModel)]="col.email" name="email" #email="ngModel"/>
+          <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+            Email is required
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="photoUrl">Photo URL A</label>
+          <input class="form-control" id="photoUrl" required [(ngModel)]="col.photoUrl" name="photoUrl"  #photo_url="ngModel"/>
+          <div [hidden]="photo_url.valid || photo_url.pristine" class="alert alert-danger">
+            Photo URL is required
+          </div>
+        </div>
+
+        <button (click)="saveCollegue()" class="btn btn-success" [disabled]="!collegueForm.form.valid">Submit</button>
+      </div>
+    </form>
   </div>
-
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input
-      class="form-control"
-      id="email"
-      required
-      [(ngModel)]="col.email"
-      name="email"
-
-    />
-
-  </div>
-
-
-  <div class="form-group">
-    <label for="photoUrl">Photo URL A</label>
-    <input
-      class="form-control"
-      id="photoUrl"
-      required
-      [(ngModel)]="col.photoUrl"
-      name="photoUrl"
-    />
-  </div>
-
-    <button (click)="saveCollegue()" class="btn btn-success">Submit</button>
-  </div>
-</form>
-</div>
 </div>

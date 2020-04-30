@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #collegueForm="ngForm">
       <div class="form-group">
         <label for="name">Nom</label>
         <input type="text" class="form-control" id="name" required [(ngModel)]="col.nom" name="name" #name="ngModel">
 
-        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        <div [hidden]="name.valid" class="alert alert-danger">
           Nom is required
         </div>
       </div>
@@ -49,7 +49,7 @@
           Photo URL is required
         </div>
       </div>
-      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+      <button type="submit" class="btn btn-success" [disabled]="!collegueForm.form.valid">Submit</button>
     </form>
   </div>
 </div>

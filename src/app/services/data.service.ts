@@ -3,6 +3,7 @@ import { Collegue } from '../models/Collegue';
 import {environment} from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
+import { Gallerie } from '../models/Gallerie';
 
 
 @Injectable({
@@ -39,5 +40,14 @@ export class DataService {
   create(data) {
     console.log(data)
     return this.http.post(this.URL_BACKEND, data);
+  }
+
+  getGallerie():Observable<Gallerie[]>{
+    return this.http.get<Gallerie[]>("https://digicapi.herokuapp.com/collegues/photos");
+
+  }
+
+  recupererCollegueParMat(matricule: string): Observable<Collegue> {
+     return this.http.get<Collegue>("https://digicapi.herokuapp.com/collegues/" + matricule);
   }
 }

@@ -9,7 +9,7 @@ import { Collegue } from '../models/Collegue';
   styleUrls: ['./edit-collegue.component.css']
 })
 export class EditCollegueComponent implements OnInit {
-  registerForm: FormGroup;
+  collegueForm: FormGroup;
   submitted = false;
   col;
 

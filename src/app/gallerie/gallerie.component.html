@@ -1,0 +1,26 @@
+<div>
+  <div class="container-fluid">
+      <div class="row" *ngIf="!afficherCollegue">
+        <span *ngFor="let photo of photos">
+          <div class="m-4"><a (click)="chargerCollegue(photo.matricule)"><img src={{photo.photoUrl}} /></a></div>
+      </span>
+      </div>
+
+
+    <div *ngIf="afficherCollegue" class="m-5">
+      <ul class="list-group">
+        <li><img src={{collegue.photoUrl}} /></li>
+        <li> {{collegue.matricule}}</li>
+        <li> {{collegue.nom}}</li>
+        <li> {{collegue.prenoms}}</li>
+        <li> {{collegue.email}}</li>
+      </ul>
+
+
+
+  </div>
+
+  </div>
+</div>
+
+

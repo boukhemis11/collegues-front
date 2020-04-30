@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CollegueAdd } from '../models/CollegueAdd';
 import { DataService } from '../services/data.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-collegue',
@@ -8,7 +9,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./add-collegue.component.css']
 })
 export class AddCollegueComponent implements OnInit {
-
+  collegueForm:FormGroup;
   col: CollegueAdd = {};
   submitted = false;
 
