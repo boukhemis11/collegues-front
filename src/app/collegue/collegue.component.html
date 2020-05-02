@@ -29,17 +29,11 @@
           <div class="col" *ngIf="!modeModif"> {{col.email}}</div>
           <div class="col" *ngIf="modeModif">
             <input type="email" class="form-control" id="email" value={{col.email}} [(ngModel)]="collegue.email"
-              required pattern=^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$ #email="ngModel">
-
-            <div *ngIf="( submit ) && email.invalid">
-              <div class="col-12 offset-sm-6 col-sm-5">
-                <div class="alert alert-warning p-1 mt-1" role="alert">
-                  Veuillez entrer un email valide.
-                </div>
+              required  #email="ngModel">
+              <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                email is required
               </div>
-            </div>
           </div>
-
 
         </div>
       </div>
@@ -50,38 +44,32 @@
         </div>
         <div class="col">
           <input type="text" id="photoUrl" class="form-control" value={{col.photoUrl}}
-            [(ngModel)]="collegue.photoUrl" required minlength="7" #photo="ngModel">
-        </div>
-
-
-        <ng-container *ngIf="( submit ) && photo.invalid">
-          <div class="col-12 offset-sm-6 col-sm-5">
-            <div class="alert alert-warning p-1 mt-1" role="alert">
+            [(ngModel)]="collegue.photoUrl" required minlength="7" #photoUrl="ngModel">
+            <div [hidden]="photoUrl.valid || photoUrl.pristine" class="alert alert-danger">
               minimum 7 caractères.
             </div>
-          </div>
-        </ng-container>
+        </div>
 
       </div>
 
     </div>
   </div>
 
-
+</div>
   <div class="row pt-2 mt-2 d-flex">
 
     <div class="col-12 col-sm-6 order-2 order-sm-1 d-flex justify-content-center">
-      <button (click)="ajouter()" class="btn btn-link">Créer un nouveau collègue</button>
+      <button [routerLink]="['/add']" class="btn btn-link">Créer un nouveau collègue</button>
     </div>
-    <div *ngIf="!modeModif" class="order-1 order-sm-2 d-flex justify-content-end">
-      <button class="btn btn-dark" (click)="modifier()">Modifier</button>
+    <div *ngIf="!modeModif && col" class="order-1 order-sm-2 d-flex justify-content-end">
+      <button class="btn btn-dark" (click)="modifier()" >Modifier</button>
     </div>
-    <div *ngIf="modeModif" class="order-1 order-sm-2 d-flex justify-content-end">
+    <div *ngIf="modeModif && col" class="order-1 order-sm-2 d-flex justify-content-end">
       <button class="btn btn-dark" (click)="valider()">Valider</button>
     </div>
 
 
-  </div>
+
 
 </div>
 <ng-template class="row" #alert>

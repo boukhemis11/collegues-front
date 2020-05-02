@@ -17,7 +17,7 @@
         <div class="form-group">
           <label for="prenoms">Prenom</label>
           <input class="form-control" id="prenoms" required [(ngModel)]="col.prenoms" name="prenoms" #lname="ngModel"/>
-          <div [hidden]="lname.valid" class="alert alert-danger">
+          <div [hidden]="lname.valid || lname.pristine" class="alert alert-danger">
             Prenom is required
           </div>
         </div>
@@ -34,7 +34,7 @@
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input class="form-control" id="email" required [(ngModel)]="col.email" name="email" #email="ngModel"/>
+          <input class="form-control" id="email"  [(ngModel)]="col.email" name="email" #email="ngModel" required/>
           <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
             Email is required
           </div>
@@ -43,13 +43,13 @@
 
         <div class="form-group">
           <label for="photoUrl">Photo URL A</label>
-          <input class="form-control" id="photoUrl" required [(ngModel)]="col.photoUrl" name="photoUrl"  #photo_url="ngModel"/>
+          <input class="form-control" id="photoUrl" required minlength="7" [(ngModel)]="col.photoUrl" name="photoUrl"  #photo_url="ngModel"/>
           <div [hidden]="photo_url.valid || photo_url.pristine" class="alert alert-danger">
-            Photo URL is required
+            Photo URL is required && minimum 7 caractères.
           </div>
         </div>
 
-        <button (click)="saveCollegue()" class="btn btn-success" [disabled]="!collegueForm.form.valid">Submit</button>
+        <button (click)="saveCollegue()" class="btn btn-success" [disabled]="!collegueForm.form.valid">Ajouter</button>
       </div>
     </form>
   </div>
