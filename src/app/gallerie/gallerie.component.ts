@@ -11,22 +11,22 @@ import { Router } from '@angular/router';
 })
 export class GallerieComponent implements OnInit {
   photos: Gallerie[] = [];
-  afficherCollegue: boolean;
+  afficherCollegue: Boolean;
   collegue: Collegue;
 
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.dataService.getGallerie()
-    .subscribe(data => this.photos = data);
-
-    this.afficherCollegue = false;
+    .subscribe(data => {this.photos = data, console.log(this.photos) });
+    this.afficherCollegue =false;
   }
 
   chargerCollegue(mat:string){
+    console.log(mat)
     this.dataService.recupererCollegueParMat(mat)
-    .subscribe(data => this.collegue = data);
-    this.afficherCollegue = true;
+    .subscribe(data => {this.collegue = data,    console.log(data)});
+    this.afficherCollegue =true;
   }
 
 }
