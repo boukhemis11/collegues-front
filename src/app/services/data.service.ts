@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import {environment} from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { Gallerie } from '../models/Gallerie';
+import { CollegueEdit } from '../models/collegueEdit';
+import { __values } from 'tslib';
 
 
 @Injectable({
@@ -42,12 +44,16 @@ export class DataService {
     return this.http.post(this.URL_BACKEND, data);
   }
 
-  getGallerie():Observable<Gallerie[]>{
+  getGallerie(): Observable<Gallerie[]>{
     return this.http.get<Gallerie[]>("https://digicapi.herokuapp.com/collegues/photos");
 
   }
 
   recupererCollegueParMat(matricule: string): Observable<Collegue> {
      return this.http.get<Collegue>("https://digicapi.herokuapp.com/collegues/" + matricule);
+  }
+
+  modificationCollegue(collegue: CollegueEdit, mat): Observable<Collegue>{
+    return this.http.patch<Collegue>(this.URL_BACKEND + mat , collegue);
   }
 }

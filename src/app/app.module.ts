@@ -9,7 +9,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CollegueComponent } from './collegue/collegue.component';
 import { RechercheCollegueParNomComponent } from './recherche-collegue-par-nom/recherche-collegue-par-nom.component';
-import { EditCollegueComponent } from './edit-collegue/edit-collegue.component';
 import { AddCollegueComponent } from './add-collegue/add-collegue.component';
 import { GallerieComponent } from './gallerie/gallerie.component';
 import { AproposComponent } from './apropos/apropos.component';
@@ -21,7 +20,6 @@ export const ROUTES: Routes = [
   { path: 'gallerie', component: GallerieComponent },
   { path: 'apropos', component: AproposComponent },
   { path: 'add', component: AddCollegueComponent },
-  { path: 'edit', component: EditCollegueComponent },
   { path: '',   redirectTo: '/accueil', pathMatch: 'full' },
   ];
 
@@ -30,7 +28,6 @@ export const ROUTES: Routes = [
     AppComponent,
     CollegueComponent,
     RechercheCollegueParNomComponent,
-    EditCollegueComponent,
     AddCollegueComponent,
     GallerieComponent,
     AproposComponent,

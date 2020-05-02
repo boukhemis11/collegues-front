@@ -1,49 +1,91 @@
-<div class="container" *ngIf="show">
+<div *ngIf="col ; else alert">
 
-  <ul>
-    <li class="list-group">
-      <div class="row justify-content-start mt-3">
-        <div class="col-4"><img src={{col.photoUrl}} class="img-fluid" alt="image" /></div>
-        <div class="col-4 mt-3">
-          <span class="badge">Matricule</span><br>
-          <span class="badge">Nom</span><br>
-          <span class="badge">Prénom</span><br>
-          <span class="badge">Date de naissance</span><br>
-          <span class="badge">Email</span><br>
-          <div *ngIf="modeModification">
-            <span class="badge">Photo URL</span>
+  <div class="row">
+    <div class="col-12 col-sm-3 m-auto d-flex justify-content-center">
+      <img src={{col.photoUrl}} class="img-fluid img-thumbnail" alt="photo de profil">
+    </div>
+
+    <div class="col m-auto">
+      <div class="row">
+        <div class="col"> Matricule :</div>
+        <div class="col"> {{col.matricule}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Nom :</div>
+        <div class="col">{{col.nom | uppercase}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Prénoms :</div>
+        <div class="col">{{col.prenoms}}</div>
+      </div>
+      <div class="row">
+        <div class="col"> Date de naissance :</div>
+        <div class="col"> {{col.dateDeNaissance | date : 'dd/MM/yyyy'}} </div>
+      </div>
+
+      <div>
+        <div class="row">
+          <div class="col">Email :</div>
+          <div class="col" *ngIf="!modeModif"> {{col.email}}</div>
+          <div class="col" *ngIf="modeModif">
+            <input type="email" class="form-control" id="email" value={{col.email}} [(ngModel)]="collegue.email"
+              required pattern=^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$ #email="ngModel">
+
+            <div *ngIf="( submit ) && email.invalid">
+              <div class="col-12 offset-sm-6 col-sm-5">
+                <div class="alert alert-warning p-1 mt-1" role="alert">
+                  Veuillez entrer un email valide.
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-4 mt-3">
-          <span class="badge">{{col.matricule}}</span><br>
-          <span class="badge">{{col.nom | uppercase}}</span><br>
-          <span class="badge">{{col.prenoms}}</span><br>
-          <span class="badge">{{col.dateDeNaissance | date : "dd.MM.y"}}</span><br>
-          <div *ngIf="!modeModification">
-            <span class="badge">{{col.email}}</span><br>
-          </div>
-          <div *ngIf="modeModification">
-            <input type="email" value="{{col.email}}">
-            <input type="text" value="{{col.photoUrl}}">
-          </div>
+
 
         </div>
       </div>
-      <div class="row justify-content-end">
-        <div *ngIf="!modeModification">
-          <button class="mr-5" routerLink="/edit" (click)="modifier()">Modifier</button>
+
+      <div class="row" *ngIf="modeModif">
+        <div class="col-6">
+          <label for="photoUrl" class="form-label">Photo Url :</label>
         </div>
-      </div>
-      <div class="row justify-content-end">
-        <div *ngIf="modeModification">
-          <button class="mr-5" (click)="valide()">Valider</button>
+        <div class="col">
+          <input type="text" id="photoUrl" class="form-control" value={{col.photoUrl}}
+            [(ngModel)]="collegue.photoUrl" required minlength="7" #photo="ngModel">
         </div>
+
+
+        <ng-container *ngIf="( submit ) && photo.invalid">
+          <div class="col-12 offset-sm-6 col-sm-5">
+            <div class="alert alert-warning p-1 mt-1" role="alert">
+              minimum 7 caractères.
+            </div>
+          </div>
+        </ng-container>
+
       </div>
-    </li>
-  </ul>
-  <div *ngIf="!modeModification">
-    <div class="row justify-content-center">   <a class="nav-link" routerLink="/add">Créer un nouveau
-        collègue</a> </div>
+
+    </div>
+  </div>
+
+
+  <div class="row pt-2 mt-2 d-flex">
+
+    <div class="col-12 col-sm-6 order-2 order-sm-1 d-flex justify-content-center">
+      <button (click)="ajouter()" class="btn btn-link">Créer un nouveau collègue</button>
+    </div>
+    <div *ngIf="!modeModif" class="order-1 order-sm-2 d-flex justify-content-end">
+      <button class="btn btn-dark" (click)="modifier()">Modifier</button>
+    </div>
+    <div *ngIf="modeModif" class="order-1 order-sm-2 d-flex justify-content-end">
+      <button class="btn btn-dark" (click)="valider()">Valider</button>
+    </div>
+
+
   </div>
 
 </div>
+<ng-template class="row" #alert>
+  <div class="alert alert-danger" role="alert">
+    Vous devez sélectionner un collegue
+  </div>
+</ng-template>
